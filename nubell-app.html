@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nubell - All the help your home needs</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #437483;
+    --green-light: #eaf2f4;
+    --green-mid: #5a96a8;
+    --pink: #A37A4A;
+    --pink-light: #f3ece3;
+    --orange: #A37A4A;
+    --yellow: #A37A4A;
+    --dark: #3A3331;
+    --gray: #7a7170;
+    --gray-light: #f4f1f0;
+    --white: #ffffff;
+    --border: #ddd8d7;
+    --cream: #EAE4E4;
+    --tan: #A37A4A;
+    --shadow: 0 2px 12px rgba(58,51,49,0.08);
+    --shadow-md: 0 4px 24px rgba(58,51,49,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: #f8f9fa;
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: white;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-text {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.5px;
+  }
+
+  .header-btns {
+    display: flex;
+    gap: 10px;
+  }
+
+  .btn-outline {
+    padding: 8px 20px;
+    border: 2px solid var(--green);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--green);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover { background: var(--green-light); }
+
+  .btn-primary {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 50px;
+    background: var(--green);
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover { background: #2e5260; transform: translateY(-1px); }
+
+  /* VIEWS */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* HERO SECTION */
+  .hero {
+    padding: 40px 20px 30px;
+    text-align: center;
+    background: white;
+  }
+
+  .hero h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 30px;
+  }
+
+  /* SERVICE GRID */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 0 20px 30px;
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 12px 8px;
+    border-radius: 12px;
+    transition: all 0.2s;
+  }
+
+  .service-card:hover {
+    background: var(--green-light);
+    transform: translateY(-2px);
+  }
+
+  .service-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-icon svg {
+    width: 56px;
+    height: 56px;
+  }
+
+  .service-card span {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+
+  /* CTA BUTTONS */
+  .cta-section {
+    padding: 10px 20px 20px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .btn-large {
+    width: 100%;
+    padding: 16px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+
+  .btn-large.primary {
+    background: var(--green);
+    color: white;
+  }
+
+  .btn-large.primary:hover { background: #2e5260; }
+
+  .btn-large.outline {
+    background: transparent;
+    border: 2px solid var(--green);
+    color: var(--green);
+  }
+
+  .btn-large.outline:hover { background: var(--green-light); }
+
+  .worker-link {
+    text-align: center;
+    font-size: 14px;
+    color: var(--gray);
+    padding-bottom: 20px;
+  }
+
+  .worker-link a {
+    color: var(--green);
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* WHAT WE OFFER */
+  .offer-section {
+    background: #EAE4E4;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .offer-section .label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+
+  .offer-section h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+
+  /* REFERRAL BANNER */
+  .referral-card {
+    background: var(--green-light);
+    border-radius: 16px;
+    margin: 20px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid #c5d8de;
+  }
+
+  .referral-card p {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+
+  .referral-card .amount {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+
+  .referral-card .btn-outline-sm {
+    padding: 10px 28px;
+    border: 2px solid var(--dark);
+    border-radius: 50px;
+    background: transparent;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .referral-card .tc {
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  /* LAUNDRY BANNER */
+  .promo-banner {
+    background: #A37A4A;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: sticky;
+    bottom: 0;
+    z-index: 50;
+  }
+
+  .promo-banner .promo-icon {
+    width: 52px;
+    height: 52px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .promo-banner .promo-text {
+    flex: 1;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  .promo-banner .promo-text span { color: #f5e9d8; }
+
+  .promo-banner .learn-more {
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .promo-close {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    background: rgba(0,0,0,0.3);
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* BOOKING FLOW */
+  .booking-view {
+    background: white;
+    min-height: 100vh;
+  }
+
+  .step-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 16px;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    background: var(--gray-light);
+    color: var(--gray);
+  }
+
+  .step-num.active {
+    background: var(--dark);
+    color: white;
+  }
+
+  .step-num.done {
+    background: var(--green);
+    color: white;
+  }
+
+  .step-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray);
+  }
+
+  .step-label.active { color: var(--dark); }
+
+  .step-line {
+    width: 60px;
+    height: 2px;
+    background: var(--border);
+    margin-bottom: 16px;
+  }
+
+  .step-line.done { background: var(--green); }
+
+  /* BOOKING CONTENT */
+  .booking-content {
+    padding: 20px;
+  }
+
+  .section-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 8px;
+    color: var(--dark);
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--gray);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  /* FREQUENCY CARDS */
+  .freq-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .freq-card {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .freq-card:hover { border-color: var(--green); background: var(--green-light); }
+  .freq-card.selected { border-color: var(--green); background: var(--green-light); }
+
+  .freq-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .freq-card-header .check-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .freq-card h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+  }
+
+  .freq-card p {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.4;
+  }
+
+  /* INFO CARD */
+  .info-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    background: #fafafa;
+    margin-bottom: 24px;
+  }
+
+  .info-card .info-img {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 14px;
+  }
+
+  .info-card h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .info-card p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* WHEN CARDS */
+  .when-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .when-card {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .when-card:hover:not(.disabled) { border-color: var(--green); background: var(--green-light); }
+  .when-card.selected { border-color: var(--green); background: var(--green-light); }
+
+  .when-card.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--gray-light);
+  }
+
+  .when-card h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .when-card p {
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  /* DAY CARDS */
+  .day-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .day-card {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .day-card:hover { border-color: var(--green); }
+  .day-card.selected { border-color: var(--green); background: var(--green-light); }
+
+  .day-card-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .day-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--green-light);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-size: 18px;
+    position: relative;
+  }
+
+  .day-icon .plus-badge {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    background: var(--green);
+    color: white;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+  }
+
+  .day-info h4 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+  }
+
+  .day-info p {
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  .save-more {
+    background: var(--pink);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 50px;
+    position: absolute;
+    top: -8px;
+    right: 16px;
+  }
+
+  .select-day {
+    color: var(--green);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  /* HOME SIZE */
+  .size-select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--green);
+    border-radius: 12px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+    color: var(--dark);
+    background: white;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%232d7a4f' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    cursor: pointer;
+    margin-bottom: 24px;
+  }
+
+  /* EXTRA TASKS */
+  .extra-tasks-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .task-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  .task-circle {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    transition: all 0.2s;
+  }
+
+  .task-item:hover .task-circle { background: var(--green); }
+  .task-item.selected .task-circle { background: var(--green); color: white; }
+
+  .task-item span {
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+
+  /* DURATION */
+  .duration-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .duration-label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    flex: 1;
+  }
+
+  .duration-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .duration-btn {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--green);
+    border-radius: 50%;
+    background: white;
+    color: var(--green);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+
+  .duration-btn:hover { background: var(--green); color: white; }
+
+  .duration-val {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  /* BOTTOM BAR */
+  .bottom-bar {
+    position: sticky;
+    bottom: 0;
+    background: var(--dark);
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 50;
+  }
+
+  .bottom-bar .info-col .val {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+  }
+
+  .bottom-bar .info-col .lbl {
+    font-size: 11px;
+    color: #9ca3af;
+  }
+
+  .bottom-bar .price-col {
+    text-align: right;
+  }
+
+  .bottom-bar .price-col .val {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: white;
+  }
+
+  .bottom-bar .price-col .lbl {
+    font-size: 11px;
+    color: #9ca3af;
+  }
+
+  .costs-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+  }
+
+  /* ACTION BUTTONS */
+  .action-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .btn-action {
+    padding: 14px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    text-align: center;
+  }
+
+  .btn-action.primary { background: var(--green); color: white; }
+  .btn-action.primary:hover { background: #2e5260; }
+  .btn-action.primary:disabled { background: #8aadb8; cursor: not-allowed; }
+  .btn-action.secondary { background: white; border: 2px solid var(--border); color: var(--dark); }
+  .btn-action.secondary:hover { border-color: var(--dark); }
+
+  /* WORKER CARDS */
+  .worker-card {
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    transition: all 0.2s;
+  }
+
+  .worker-card:hover { border-color: var(--green); box-shadow: var(--shadow); }
+
+  .worker-info {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .worker-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .worker-details h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .worker-stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--dark);
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+
+  .worker-stat .thumb { font-size: 16px; }
+
+  .worker-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--border);
+  }
+
+  .worker-actions button {
+    padding: 12px;
+    background: none;
+    border: none;
+    color: var(--green);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .worker-actions button:first-child {
+    border-right: 1px solid var(--border);
+  }
+
+  .worker-actions button:hover { background: var(--green-light); }
+
+  /* DETAILS DROPDOWN */
+  .details-toggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: var(--green);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* NAV */
+  .page-nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .view.active {
+    animation: fadeIn 0.3s ease;
+  }
+
+  /* Scrollable booking content */
+  .booking-scroll {
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+    padding-bottom: 20px;
+  }
+
+  .relative { position: relative; }
+
+  /* Done checkmark */
+  .done-icon {
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  /* Book now bar */
+  .book-now-bar {
+    position: sticky;
+    bottom: 0;
+    padding: 12px 20px;
+    background: white;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 480px) {
+    .service-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .tasks-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <a class="logo" onclick="showView('home')">
+    <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+      <path d="M20 4 L8 16 L8 34 L32 34 L32 16 Z" fill="#437483" opacity="0.2"/>
+      <path d="M20 4 L8 16" stroke="#437483" stroke-width="3" stroke-linecap="round"/>
+      <path d="M20 4 L32 16" stroke="#437483" stroke-width="3" stroke-linecap="round"/>
+      <rect x="14" y="22" width="12" height="12" rx="2" fill="#437483"/>
+      <!-- Sunburst -->
+      <path d="M20 2 L20 0 M26 4 L27 2 M30 8 L32 7 M14 4 L13 2 M10 8 L8 7" stroke="#A37A4A" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <span class="logo-text">nubell</span>
+  </a>
+  <div class="header-btns">
+    <button class="btn-outline" onclick="showView('home')">Log In</button>
+    <button class="btn-primary">Sign Up</button>
+  </div>
+</div>
+
+<!-- HOME VIEW -->
+<div id="view-home" class="view active">
+  <!-- Hero -->
+  <div class="hero">
+    <h1>All the help your<br>home needs.</h1>
+  </div>
+
+  <!-- Services Grid -->
+  <div class="service-grid">
+    <div class="service-card" onclick="startBooking('Indoor Cleaning')">
+      <div class="service-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <ellipse cx="20" cy="38" rx="12" ry="6" fill="#fde68a" opacity="0.6"/>
+          <rect x="16" y="10" width="6" height="28" rx="3" fill="#d1d5db"/>
+          <circle cx="16" cy="38" r="5" fill="#fbbf24" stroke="#f59e0b" stroke-width="1.5"/>
+          <circle cx="16" cy="38" r="2" fill="#1a1a1a" opacity="0.3"/>
+          <path d="M26 22 L42 22" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round"/>
+          <path d="M28 26 L40 26" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span>Indoor<br>Cleaning</span>
+    </div>
+
+    <div class="service-card" onclick="startBooking('Outdoor Services')">
+      <div class="service-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <path d="M20 40 L20 20 Q20 10 12 8 Q18 12 18 22 L18 40Z" fill="#4ade80"/>
+          <path d="M28 40 L28 16 Q28 4 20 2 Q26 8 26 18 L26 40Z" fill="#22c55e"/>
+          <path d="M36 40 L36 22 Q36 12 28 10 Q34 14 34 24 L34 40Z" fill="#4ade80"/>
+          <line x1="10" y1="40" x2="46" y2="40" stroke="#92400e" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span>Outdoor<br>Services</span>
+    </div>
+
+    <div class="service-card" onclick="startBooking('Office Cleaning')">
+      <div class="service-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <rect x="12" y="8" width="32" height="40" rx="3" fill="#fca5a5" opacity="0.3"/>
+          <rect x="12" y="8" width="32" height="40" rx="3" stroke="#1a1a1a" stroke-width="2"/>
+          <rect x="18" y="16" width="8" height="8" rx="1" fill="#fca5a5"/>
+          <rect x="30" y="16" width="8" height="8" rx="1" fill="#fca5a5"/>
+          <rect x="18" y="28" width="8" height="8" rx="1" fill="#fca5a5"/>
+          <rect x="30" y="28" width="8" height="8" rx="1" fill="#fca5a5"/>
+        </svg>
+      </div>
+      <span>Office<br>Cleaning</span>
+    </div>
+
+    <div class="service-card" onclick="startBooking('Moving Cleaning')">
+      <div class="service-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <path d="M42 28 L32 18 L20 18 L14 28 L42 28Z" fill="#6ee7b7" opacity="0.5"/>
+          <path d="M42 28 L32 18 L20 18 L14 28 L42 28Z" stroke="#059669" stroke-width="2"/>
+          <line x1="28" y1="18" x2="28" y2="10" stroke="#059669" stroke-width="2"/>
+          <path d="M24 10 L28 6 L32 10" fill="#f9a8d4" stroke="#ec4899" stroke-width="1.5"/>
+          <circle cx="20" cy="32" r="4" fill="#374151"/>
+          <circle cx="36" cy="32" r="4" fill="#374151"/>
+        </svg>
+      </div>
+      <span>Moving<br>Cleaning</span>
+    </div>
+
+    <div class="service-card" onclick="startBooking('Mom Helper')">
+      <div class="service-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <path d="M14 36 Q14 20 28 18 Q42 20 42 36" fill="#fda4af" opacity="0.4"/>
+          <path d="M14 36 Q14 20 28 18 Q42 20 42 36" stroke="#f43f5e" stroke-width="2"/>
+          <circle cx="28" cy="22" r="5" fill="#fda4af"/>
+          <path d="M22 30 L28 26 L34 30" stroke="#f43f5e" stroke-width="1.5" fill="none"/>
+          <text x="28" y="42" text-anchor="middle" font-size="8" fill="#f43f5e">♥</text>
+        </svg>
+      </div>
+      <span>Mom's<br>Helper</span>
+    </div>
+
+    <div class="service-card" onclick="startBooking('Elder Care')">
+      <div class="service-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <circle cx="28" cy="14" r="6" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1.5"/>
+          <rect x="22" y="22" width="12" height="16" rx="4" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1.5"/>
+          <line x1="22" y1="30" x2="16" y2="38" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+          <line x1="34" y1="30" x2="40" y2="38" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+          <line x1="40" y1="38" x2="40" y2="46" stroke="#92400e" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span>Elder<br>Care</span>
+    </div>
+
+    <div class="service-card" onclick="startBooking('Airbnb Cleaning')">
+      <div class="service-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <path d="M28 10 L42 24 L42 44 L14 44 L14 24 Z" fill="#fca5a5" opacity="0.4"/>
+          <path d="M28 10 L42 24 L42 44 L14 44 L14 24 Z" stroke="#ef4444" stroke-width="2"/>
+          <rect x="22" y="32" width="12" height="12" rx="1" fill="#ef4444" opacity="0.6"/>
+          <circle cx="40" cy="12" r="8" fill="#f5e9d8" stroke="#f59e0b" stroke-width="1.5"/>
+          <path d="M36 12 L40 8 L44 12" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+          <line x1="36" y1="16" x2="44" y2="16" stroke="#f59e0b" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <span>Airbnb<br>Cleaning</span>
+    </div>
+
+    <div class="service-card" onclick="startBooking('Laundry & Ironing')">
+      <div class="service-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <path d="M12 30 Q12 22 28 22 Q44 22 44 30 L42 38 L14 38 Z" fill="#fde68a" opacity="0.7"/>
+          <path d="M12 30 Q12 22 28 22 Q44 22 44 30 L42 38 L14 38 Z" stroke="#d97706" stroke-width="2"/>
+          <rect x="8" y="36" width="40" height="6" rx="2" fill="#d97706" opacity="0.4"/>
+          <path d="M14 22 L42 22" stroke="#d97706" stroke-width="2"/>
+        </svg>
+      </div>
+      <span>Laundry<br>& Ironing</span>
+    </div>
+
+    <div class="service-card" onclick="startBooking('Dog Walking')">
+      <div class="service-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <ellipse cx="24" cy="30" rx="12" ry="8" fill="#fca5a5" opacity="0.5"/>
+          <path d="M12 30 Q12 22 24 22 Q36 22 36 30 Q36 38 24 38 Q12 38 12 30Z" fill="#fca5a5"/>
+          <circle cx="18" cy="22" r="4" fill="#fca5a5"/>
+          <circle cx="28" cy="18" r="4" fill="#fca5a5"/>
+          <circle cx="20" cy="28" r="2" fill="#1a1a1a"/>
+          <circle cx="30" cy="28" r="2" fill="#1a1a1a"/>
+          <path d="M22 33 Q26 35 30 33" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
+          <line x1="36" y1="28" x2="46" y2="20" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span>Dog<br>Walking</span>
+    </div>
+
+    <div class="service-card" onclick="startBooking('Express Cleaning')">
+      <div class="service-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <ellipse cx="28" cy="38" rx="16" ry="8" fill="#f9a8d4" opacity="0.4"/>
+          <path d="M22 14 L30 26 L24 26 L34 44 L26 30 L32 30 Z" fill="#ec4899"/>
+          <circle cx="28" cy="12" r="4" fill="#fda4af"/>
+          <line x1="14" y1="20" x2="20" y2="20" stroke="#f9a8d4" stroke-width="2" stroke-linecap="round"/>
+          <line x1="36" y1="20" x2="42" y2="20" stroke="#f9a8d4" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span>Express<br>Cleaning</span>
+    </div>
+
+    <div class="service-card" onclick="startBooking('Extra Care')">
+      <div class="service-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <path d="M28 44 Q14 34 14 24 Q14 16 22 16 Q26 16 28 20 Q30 16 34 16 Q42 16 42 24 Q42 34 28 44Z" fill="#fca5a5" stroke="#f43f5e" stroke-width="2"/>
+          <line x1="28" y1="20" x2="28" y2="32" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="22" y1="26" x2="34" y2="26" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span>Extra<br>Care</span>
+    </div>
+  </div>
+
+  <!-- CTAs -->
+  <div class="cta-section">
+    <button class="btn-large primary" onclick="startBooking('Indoor Cleaning')">Book a Service</button>
+    <button class="btn-large outline">Find Full-Time Help</button>
+  </div>
+
+  <div class="worker-link">
+    Are you a worker? <a>Apply Now</a>
+  </div>
+
+  <!-- What We Offer -->
+  <div class="offer-section">
+    <div class="label">What We Offer</div>
+    <h2>More than just a home<br>services platform.</h2>
+  </div>
+
+  <!-- Referral Card -->
+  <div class="referral-card">
+    <p>Invite friends &amp; earn</p>
+    <div class="amount">R100 NubellCred<br><small style="font-size:14px;font-weight:600;color:#6b7280;">per friend referral</small></div>
+    <button class="btn-outline-sm">Refer &amp; Earn</button><br>
+    <div class="tc">Ts &amp; Cs apply</div>
+  </div>
+
+  <!-- Promo Banner -->
+  <div class="promo-banner" style="position:relative;">
+    <div class="promo-icon">
+      <svg width="28" height="28" viewBox="0 0 56 56" fill="none">
+        <path d="M12 30 Q12 22 28 22 Q44 22 44 30 L42 38 L14 38 Z" fill="#fde68a"/>
+        <rect x="8" y="36" width="40" height="6" rx="2" fill="#d97706" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="promo-text"><span>The easiest</span> laundry day<br>ever awaits!</div>
+    <button class="learn-more" onclick="startBooking('Laundry & Ironing')">Learn More</button>
+    <button class="promo-close" onclick="this.parentElement.style.display='none'">✕</button>
+  </div>
+</div>
+
+<!-- BOOKING STEP 1: Frequency -->
+<div id="view-frequency" class="view">
+  <div class="page-nav relative">
+    <div class="steps">
+      <div class="step">
+        <div class="step-num active">1</div>
+        <div class="step-label active">Details</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-label">Worker</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-label">Payment</div>
+      </div>
+    </div>
+    <button class="details-toggle">Details ▾</button>
+  </div>
+
+  <div class="booking-scroll">
+    <div class="booking-content">
+      <div class="section-title">How often do you need help?</div>
+      <div class="section-subtitle">How often do you need the service?</div>
+
+      <div class="freq-cards">
+        <div class="freq-card selected" id="freq-onetime" onclick="selectFreq('onetime')">
+          <div class="freq-card-header">
+            <svg class="check-icon" viewBox="0 0 22 22" fill="none">
+              <rect width="22" height="22" rx="4" fill="#437483" opacity="0.15"/>
+              <rect x="3" y="3" width="16" height="16" rx="3" stroke="#437483" stroke-width="2"/>
+              <path d="M6 11 L10 15 L16 8" stroke="#437483" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <h3>One Time</h3>
+          </div>
+          <p>For once-off services that will not repeat.</p>
+        </div>
+
+        <div class="freq-card" id="freq-repeat" onclick="selectFreq('repeat')">
+          <div class="freq-card-header">
+            <svg class="check-icon" viewBox="0 0 22 22" fill="none">
+              <rect width="22" height="22" rx="4" fill="#437483" opacity="0.15"/>
+              <path d="M6 11 A5 5 0 1 1 16 11" stroke="#437483" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M14 8 L16 11 L18 8" fill="#437483"/>
+            </svg>
+            <h3>Repeat</h3>
+          </div>
+          <p>For repeat services every few days / weeks.</p>
+        </div>
+      </div>
+
+      <div class="section-title" style="text-align:left;font-size:18px;">When do you need help?</div>
+      <div class="when-cards" style="margin-top:16px;">
+        <div class="when-card" id="when-tomorrow" onclick="selectWhen('tomorrow')">
+          <h3>Tomorrow</h3>
+          <p>Get help tomorrow</p>
+        </div>
+        <div class="when-card" id="when-later" onclick="selectWhen('later')">
+          <h3>Later</h3>
+          <p>Get help later</p>
+        </div>
+        <div class="when-card disabled">
+          <h3>Today</h3>
+          <p>Fully Booked</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-img">
+          <svg viewBox="0 0 90 90" fill="none" width="90" height="90">
+            <rect x="20" y="50" width="50" height="34" rx="4" fill="#e8f5ee" stroke="#437483" stroke-width="2"/>
+            <path d="M18 52 L45 32 L72 52" stroke="#437483" stroke-width="2" fill="none"/>
+            <rect x="34" y="60" width="22" height="24" rx="2" fill="#437483" opacity="0.2"/>
+            <path d="M40 50 L48 44 M52 44 L58 50" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="65" cy="30" r="12" fill="#fef3c7"/>
+            <path d="M61 30 L65 26 L69 30" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+            <line x1="61" y1="34" x2="69" y2="34" stroke="#f59e0b" stroke-width="1.5"/>
+            <!-- sparkles -->
+            <path d="M24 40 L26 36 L28 40 L26 44Z" fill="#ec4899" opacity="0.7"/>
+            <path d="M60 24 L62 20 L64 24 L62 28Z" fill="#ec4899" opacity="0.5"/>
+          </svg>
+        </div>
+        <h3>Top-to-bottom clean</h3>
+        <p>Indoor Cleaning includes a clean of all common areas in your home, including your bedrooms, bathrooms, living room(s) and kitchen.</p>
+      </div>
+
+      <div class="action-btns">
+        <button class="btn-action primary" onclick="showView('home-size')" id="freq-next-btn">Find a Worker</button>
+        <button class="btn-action secondary" onclick="showView('home')">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="info-col">
+      <div class="val">--</div>
+      <div class="lbl">Weekly Total: R</div>
+    </div>
+    <button class="costs-btn">ⓘ Costs</button>
+  </div>
+</div>
+
+<!-- BOOKING STEP 1b: Home Size & Extra Tasks -->
+<div id="view-home-size" class="view">
+  <div class="page-nav relative">
+    <div class="steps">
+      <div class="step">
+        <div class="step-num active">1</div>
+        <div class="step-label active">Details</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-label">Worker</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-label">Payment</div>
+      </div>
+    </div>
+    <button class="details-toggle">Details ▾</button>
+  </div>
+
+  <div class="booking-scroll">
+    <div class="booking-content">
+      <div class="section-title">How big is your home?</div>
+      <div class="section-subtitle" style="margin-bottom:16px;">Select your home size</div>
+
+      <select class="size-select" id="home-size-select" onchange="updatePrice()">
+        <option value="small">Small Home: 1-2 Bedrooms</option>
+        <option value="medium" selected>Medium Home: 3-4 Bedrooms</option>
+        <option value="large">Large Home: 5+ Bedrooms</option>
+        <option value="studio">Studio / Bachelor</option>
+      </select>
+
+      <div class="extra-tasks-title">Extra Tasks</div>
+      <div class="tasks-grid">
+        <div class="task-item" onclick="toggleTask(this)">
+          <div class="task-circle">🧊</div>
+          <span>Inside Fridge</span>
+        </div>
+        <div class="task-item" onclick="toggleTask(this)">
+          <div class="task-circle">🍳</div>
+          <span>Inside Oven</span>
+        </div>
+        <div class="task-item" onclick="toggleTask(this)">
+          <div class="task-circle">🗄️</div>
+          <span>Inside Cabinets</span>
+        </div>
+        <div class="task-item" onclick="toggleTask(this)">
+          <div class="task-circle">🪟</div>
+          <span>Interior Windows</span>
+        </div>
+        <div class="task-item" onclick="toggleTask(this)">
+          <div class="task-circle">🧱</div>
+          <span>Interior Walls</span>
+        </div>
+        <div class="task-item" onclick="toggleTask(this)">
+          <div class="task-circle">🌱</div>
+          <span>Water Plants</span>
+        </div>
+        <div class="task-item" onclick="toggleTask(this)">
+          <div class="task-circle">👔</div>
+          <span>Ironing</span>
+        </div>
+        <div class="task-item" onclick="toggleTask(this)">
+          <div class="task-circle">🫧</div>
+          <span>Laundry</span>
+        </div>
+        <div class="task-item" onclick="toggleTask(this)">
+          <div class="task-circle">🏠</div>
+          <span>Small Flatlet</span>
+        </div>
+      </div>
+
+      <div class="duration-row">
+        <div class="duration-label">How Long?</div>
+        <div class="duration-controls">
+          <button class="duration-btn" onclick="changeDuration(-0.5)">−</button>
+          <div class="duration-val" id="duration-val">5.5</div>
+          <button class="duration-btn" onclick="changeDuration(0.5)">+</button>
+        </div>
+      </div>
+
+      <div class="action-btns">
+        <button class="btn-action primary" onclick="showView('workers')">Find a Worker</button>
+        <button class="btn-action secondary" onclick="showView('frequency')">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="info-col">
+      <div class="val" id="duration-bar">5.5</div>
+      <div class="lbl">Est. hours</div>
+    </div>
+    <div class="price-col">
+      <div class="val" id="price-bar">R305</div>
+      <div class="lbl">Est. Price</div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING STEP 1c: Days (for repeat) -->
+<div id="view-days" class="view">
+  <div class="page-nav relative">
+    <div class="steps">
+      <div class="step">
+        <div class="step-num active">1</div>
+        <div class="step-label active">Details</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num">2</div><div class="step-label">Worker</div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num">3</div><div class="step-label">Payment</div></div>
+    </div>
+    <button class="details-toggle">Details ▾</button>
+  </div>
+
+  <div class="booking-scroll">
+    <div class="booking-content">
+      <div class="section-title">Which days?</div>
+
+      <div class="day-cards">
+        <div class="day-card" onclick="toggleDay(this)">
+          <div class="save-more">Save More</div>
+          <div class="day-card-left">
+            <div class="day-icon">📅<div class="plus-badge">+</div></div>
+            <div class="day-info">
+              <h4>Monday</h4>
+              <p>R274</p>
+            </div>
+          </div>
+          <div class="select-day">Select Day</div>
+        </div>
+
+        <div class="day-card" onclick="toggleDay(this)">
+          <div class="save-more">Save More</div>
+          <div class="day-card-left">
+            <div class="day-icon">📅<div class="plus-badge">+</div></div>
+            <div class="day-info">
+              <h4>Tuesday</h4>
+              <p>R274</p>
+            </div>
+          </div>
+          <div class="select-day">Select Day</div>
+        </div>
+
+        <div class="day-card" onclick="toggleDay(this)">
+          <div class="save-more">Save More</div>
+          <div class="day-card-left">
+            <div class="day-icon">📅<div class="plus-badge">+</div></div>
+            <div class="day-info">
+              <h4>Wednesday</h4>
+              <p>R274</p>
+            </div>
+          </div>
+          <div class="select-day">Select Day</div>
+        </div>
+
+        <div class="day-card" onclick="toggleDay(this)">
+          <div class="day-card-left">
+            <div class="day-icon">📅<div class="plus-badge">+</div></div>
+            <div class="day-info">
+              <h4>Thursday</h4>
+              <p>R274</p>
+            </div>
+          </div>
+          <div class="select-day">Select Day</div>
+        </div>
+
+        <div class="day-card" onclick="toggleDay(this)">
+          <div class="day-card-left">
+            <div class="day-icon">📅<div class="plus-badge">+</div></div>
+            <div class="day-info">
+              <h4>Friday</h4>
+              <p>R278</p>
+            </div>
+          </div>
+          <div class="select-day">Select Day</div>
+        </div>
+      </div>
+
+      <div class="action-btns">
+        <button class="btn-action primary" onclick="showView('workers')">Find a Worker</button>
+        <button class="btn-action secondary" onclick="showView('frequency')">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="info-col">
+      <div class="val">--</div>
+      <div class="lbl">Weekly Total: R</div>
+    </div>
+    <button class="costs-btn">ⓘ Costs</button>
+  </div>
+</div>
+
+<!-- BOOKING STEP 2: Workers -->
+<div id="view-workers" class="view">
+  <div class="page-nav relative">
+    <div class="steps">
+      <div class="step">
+        <div class="done-icon">✓</div>
+        <div class="step-label">Details</div>
+      </div>
+      <div class="step-line done"></div>
+      <div class="step">
+        <div class="step-num active">2</div>
+        <div class="step-label active">Worker</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-label">Payment</div>
+      </div>
+    </div>
+    <button class="details-toggle">Details ▾</button>
+  </div>
+
+  <div class="booking-scroll">
+    <div class="booking-content">
+      <div class="section-title" style="text-align:left;">Choose your worker</div>
+      <p style="font-size:13px;color:#6b7280;margin-bottom:20px;">All workers are vetted and trained</p>
+
+      <!-- Worker 1 -->
+      <div class="worker-card">
+        <div class="worker-info">
+          <div class="worker-avatar" style="background:#fde68a;font-size:32px;">👩🏽</div>
+          <div class="worker-details">
+            <h3>Flavia Ngandwe Chola</h3>
+            <div class="worker-stat"><span class="thumb">👍</span> 98% Recommend</div>
+            <div class="worker-stat" style="font-weight:700;">54 &nbsp;<span style="color:#6b7280;font-weight:400;">Jobs Completed</span></div>
+          </div>
+        </div>
+        <div class="worker-actions">
+          <button onclick="alert('Viewing profile...')">View profile</button>
+          <button onclick="chooseWorker('Flavia Ngandwe Chola')">Choose me</button>
+        </div>
+      </div>
+
+      <!-- Worker 2 -->
+      <div class="worker-card">
+        <div class="worker-info">
+          <div class="worker-avatar" style="background:#dbeafe;font-size:32px;">👩🏾</div>
+          <div class="worker-details">
+            <h3>Sylvia Mumba</h3>
+            <div class="worker-stat"><span class="thumb">👍</span> 93% Recommend</div>
+            <div class="worker-stat" style="font-weight:700;">150 &nbsp;<span style="color:#6b7280;font-weight:400;">Jobs Completed</span></div>
+          </div>
+        </div>
+        <div class="worker-actions">
+          <button onclick="alert('Viewing profile...')">View profile</button>
+          <button onclick="chooseWorker('Sylvia Mumba')">Choose me</button>
+        </div>
+      </div>
+
+      <!-- Worker 3 -->
+      <div class="worker-card">
+        <div class="worker-info">
+          <div class="worker-avatar" style="background:#d1fae5;font-size:32px;">👩🏿</div>
+          <div class="worker-details">
+            <h3>Jameelah Wasili</h3>
+            <div class="worker-stat"><span class="thumb">👍</span> 93% Recommend</div>
+            <div class="worker-stat" style="font-weight:700;">371 &nbsp;<span style="color:#6b7280;font-weight:400;">Jobs Completed</span></div>
+          </div>
+        </div>
+        <div class="worker-actions">
+          <button onclick="alert('Viewing profile...')">View profile</button>
+          <button onclick="chooseWorker('Jameelah Wasili')">Choose me</button>
+        </div>
+      </div>
+
+      <!-- Worker 4 -->
+      <div class="worker-card">
+        <div class="worker-info">
+          <div class="worker-avatar" style="background:#fce7f3;font-size:32px;">👩🏽</div>
+          <div class="worker-details">
+            <h3>Nomvula Dlamini</h3>
+            <div class="worker-stat"><span class="thumb">👍</span> 96% Recommend</div>
+            <div class="worker-stat" style="font-weight:700;">89 &nbsp;<span style="color:#6b7280;font-weight:400;">Jobs Completed</span></div>
+          </div>
+        </div>
+        <div class="worker-actions">
+          <button onclick="alert('Viewing profile...')">View profile</button>
+          <button onclick="chooseWorker('Nomvula Dlamini')">Choose me</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="info-col">
+      <div class="val" id="workers-hours">5.5</div>
+      <div class="lbl">Total. hours</div>
+    </div>
+    <div class="price-col">
+      <div class="val">R305</div>
+      <div class="lbl">Booking Price</div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING STEP 3: Payment (success) -->
+<div id="view-payment" class="view">
+  <div class="page-nav relative">
+    <div class="steps">
+      <div class="step">
+        <div class="done-icon">✓</div>
+        <div class="step-label">Details</div>
+      </div>
+      <div class="step-line done"></div>
+      <div class="step">
+        <div class="done-icon">✓</div>
+        <div class="step-label">Worker</div>
+      </div>
+      <div class="step-line done"></div>
+      <div class="step">
+        <div class="step-num active">3</div>
+        <div class="step-label active">Payment</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="booking-scroll">
+    <div class="booking-content" style="text-align:center;padding-top:40px;">
+      <div style="font-size:80px;margin-bottom:20px;">🎉</div>
+      <h2 style="font-family:'Nunito',sans-serif;font-size:26px;font-weight:900;margin-bottom:12px;">Booking Confirmed!</h2>
+      <p style="color:#6b7280;font-size:15px;margin-bottom:8px;">Your worker has been selected.</p>
+      <p id="worker-chosen" style="font-family:'Nunito',sans-serif;font-weight:800;font-size:18px;color:#437483;margin-bottom:30px;"></p>
+
+      <div style="background:#eaf2f4;border:2px solid #437483;border-radius:16px;padding:24px;margin-bottom:24px;text-align:left;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:12px;">
+          <span style="color:#6b7280;font-size:14px;">Service</span>
+          <span id="payment-service" style="font-weight:700;font-size:14px;"></span>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:12px;">
+          <span style="color:#6b7280;font-size:14px;">Duration</span>
+          <span style="font-weight:700;font-size:14px;">5.5 hours</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;border-top:1px solid #e5e7eb;padding-top:12px;margin-top:4px;">
+          <span style="font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;">Total</span>
+          <span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:#437483;">R305</span>
+        </div>
+      </div>
+
+      <button class="btn-large primary" onclick="showView('home')" style="margin-bottom:12px;">Back to Home</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentService = 'Indoor Cleaning';
+  let duration = 5.5;
+  let frequency = 'onetime';
+
+  function showView(name) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById('view-' + name).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function startBooking(service) {
+    currentService = service;
+    document.getElementById('payment-service').textContent = service;
+    showView('frequency');
+  }
+
+  function selectFreq(type) {
+    frequency = type;
+    document.getElementById('freq-onetime').classList.toggle('selected', type === 'onetime');
+    document.getElementById('freq-repeat').classList.toggle('selected', type === 'repeat');
+  }
+
+  function selectWhen(when) {
+    document.querySelectorAll('.when-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('when-' + when).classList.add('selected');
+  }
+
+  function toggleTask(el) {
+    el.classList.toggle('selected');
+  }
+
+  function toggleDay(card) {
+    card.classList.toggle('selected');
+    const btn = card.querySelector('.select-day');
+    btn.textContent = card.classList.contains('selected') ? '✓ Selected' : 'Select Day';
+  }
+
+  function changeDuration(delta) {
+    duration = Math.max(1, Math.min(12, duration + delta));
+    duration = Math.round(duration * 2) / 2;
+    document.getElementById('duration-val').textContent = duration;
+    document.getElementById('duration-bar').textContent = duration;
+    updatePrice();
+  }
+
+  function updatePrice() {
+    const basePrice = Math.round(duration * 55.45);
+    document.getElementById('price-bar').textContent = 'R' + basePrice;
+  }
+
+  function chooseWorker(name) {
+    document.getElementById('worker-chosen').textContent = name + ' will be your cleaner';
+    showView('payment');
+  }
+</script>
+</body>
+</html>
